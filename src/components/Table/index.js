@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-
+import './index.css';
 import { Table } from 'antd';
 
 const DisplayTable = (props) => {
@@ -32,45 +32,19 @@ const {tableData} = props
 
 console.log(tableData)
 
-const data = tableData
+const data = tableData.map((each) => ({
+    userId: each.user_id,
+    id: each.id,
+    title: each.title,
+    body: each.body
+}))
 
-
-const newData = [
-  {
-    key: '1',
-    name: 'John Brown',
-    chinese: 98,
-    math: 60,
-    english: 70,
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    chinese: 98,
-    math: 66,
-    english: 89,
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    chinese: 98,
-    math: 90,
-    english: 70,
-  },
-  {
-    key: '4',
-    name: 'Jim Red',
-    chinese: 88,
-    math: 99,
-    english: 89,
-  },
-];
 
 function onChange(pagination, filters, sorter, extra) {
   console.log('params', pagination, filters, sorter, extra);
 }
 
-  return <div>
+  return <div className='table-container'>
       <Table columns={columns} dataSource={data} onChange={onChange} />
   </div>;
 };

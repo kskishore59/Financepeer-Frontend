@@ -11,6 +11,7 @@ class SignUp extends Component {
     showSubmitError: false,
     errorMsg: '',
     isPasswordVisible: false,
+    successMsg: ''
   }
 
   onChangeUsername = event => {
@@ -43,17 +44,18 @@ class SignUp extends Component {
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
-      headers: {
-          
+      headers:{
+        "Content-Type": "application/json",
+        accept: "application/json"
       }
     }
     const response = await fetch(url, options)
     const data = await response.text()
     console.log(data)
     if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token)
+      this.setState({successMsg: data})
     } else {
-      this.onSubmitFailure(data.error_msg)
+      this.setState({successMsg: data})
     }
       
     } catch (error) {
@@ -121,7 +123,7 @@ class SignUp extends Component {
       const {history} = this.props
     history.replace('/')
     }
-    const {showSubmitError, errorMsg} = this.state
+    const {showSubmitError, errorMsg, successMsg} = this.state
     return (
       <div className="login-form-container">
         <form className="form-container" onSubmit={this.submitForm}>
@@ -132,6 +134,10 @@ class SignUp extends Component {
             Register
           </button>
           {showSubmitError && <p className="error-message">{errorMsg}</p>}
+          {successMsg  !=='' ? (<div>
+            
+              <p>{successMsg} <br/>Please Login Now</p>
+          </div>) : ''}
         </form>
         <Link to="/login">
         <div>

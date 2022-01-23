@@ -37,7 +37,7 @@ class Login extends Component {
     event.preventDefault()
       const { username, password } = this.state
     const userDetails = {username, password}
-    const url = 'http://localhost:3002/login/'
+    const url = 'https://finanbackend.herokuapp.com/login/'
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
