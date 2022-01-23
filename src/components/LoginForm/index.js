@@ -50,7 +50,6 @@ class Login extends Component {
     console.log(options)
     fetch(url, options)
             .then(response => {
-            console.log(response)
                if (response.ok) {
                   return response.json();
                } else {

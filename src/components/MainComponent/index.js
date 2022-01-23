@@ -15,7 +15,6 @@ const Home = (props) => {
     reader.readAsText(files[0]);
     reader.onload = async function(e) {
         const result = e.target.result
-        console.log(result)
         setShow(true)
         const url ='https://finanbackend.herokuapp.com/add/'
     const jwtToken = Cookies.get('jwt_token')
@@ -29,7 +28,9 @@ const Home = (props) => {
         body: result
     }
     const response = await fetch(url, options)
-    console.log(response.json())
+    const res = await response.json()
+    console.log(res)
+
     }
     
     
@@ -46,7 +47,6 @@ const onClickView = async () => {
     }
     const response = await fetch(url, options)
     const newData = await response.json()
-    console.log(newData)
     setData(newData)
     setView(true)
 }

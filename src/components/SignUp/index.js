@@ -31,7 +31,6 @@ class SignUp extends Component {
   }
 
   onSubmitFailure = errorMsg => {
-    console.log(errorMsg)
     this.setState({showSubmitError: true, errorMsg})
   }
 
@@ -51,7 +50,6 @@ class SignUp extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.text()
-    console.log(data)
     if (response.ok === true) {
       this.setState({successMsg: data})
     } else {

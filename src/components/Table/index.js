@@ -30,8 +30,6 @@ const DisplayTable = (props) => {
 
 const {tableData} = props
 
-console.log(tableData)
-
 const data = tableData.map((each) => ({
     userId: each.user_id,
     id: each.id,
