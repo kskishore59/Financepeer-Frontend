@@ -22,7 +22,9 @@ const Home = () => {
     const options = {
         method: 'POST',
         headers : {
-            Authorization: `Bearer ${jwtToken}` 
+            Authorization: `Bearer ${jwtToken}`,
+             "Content-Type": "application/json",
+        accept: "application/json"
         },
         body: result
     }
