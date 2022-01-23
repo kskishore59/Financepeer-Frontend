@@ -138,13 +138,14 @@ class SignUp extends Component {
             
               <p>{successMsg} <br/>Please Login Now</p>
           </div>) : ''}
-        </form>
-        <Link to="/login">
+          <Link to="/login">
         <div>
-          <p>Have an account ?</p>
-          <button type='button'>Sign In</button>
+          <p className='input-label'>Have an account ?</p>
+          <button className='signup-button' type='button'>Sign In</button>
         </div>
         </Link>
+        </form>
+        
       
       </div>
     )

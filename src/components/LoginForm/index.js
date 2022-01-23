@@ -132,13 +132,16 @@ class Login extends Component {
             Login
           </button>
           {showSubmitError && <p className="error-message">{errorMsg}</p>}
-        </form>
-        <Link to="/signup">
-        <div>
-          <p>Do not have an account ?</p>
-          <button type='button'>Sign Up</button>
+           <div>
+          <Link to="/signup">
+          <p className='input-label'>Do not have an account ?</p>
+          <button className='signup-button' type='button'>Sign Up</button>
+          </Link>
         </div>
-        </Link>
+        </form>
+        
+       
+        
       
       </div>
     )

@@ -1,6 +1,5 @@
 .login-form-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -12,11 +11,6 @@
   color: #f7931e;
 }
 
-@media screen and (min-width: 992px) {
-  .login-form-container {
-    flex-direction: row;
-  }
-}
 
 .login-website-logo-mobile-image {
   width: 165px;
@@ -175,6 +169,21 @@
   padding: 8px 16px 8px 16px;
   border: none;
   outline: none;
+}
+
+.signup-button{
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
+  height: 40px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 2px;
+  background-color: #285897;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
 
 .eye {
