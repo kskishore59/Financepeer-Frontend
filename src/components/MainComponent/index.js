@@ -17,7 +17,7 @@ const Home = (props) => {
         const result = e.target.result
         console.log(result)
         setShow(true)
-        const url ='http://localhost:3002/add/'
+        const url ='https://finanbackend.herokuapp.com/add/'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
         method: 'POST',
