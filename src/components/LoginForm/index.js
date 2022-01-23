@@ -35,23 +35,31 @@ class Login extends Component {
 
   submitForm = async event => {
     event.preventDefault()
-      const {username, password} = this.state
+      const { username, password } = this.state
     const userDetails = {username, password}
     const url = 'http://localhost:3002/login/'
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
+      headers:{
+        "Content-Type": "application/json",
+        accept: "application/json"
+      }
     }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    console.log(data)
-    if (response.ok === true) {
-      this.onSubmitSuccess(data.jwt_token)
-    } else {
-      this.onSubmitFailure(data.error_msg)
-    }
-    
-  }
+
+    console.log(options)
+    fetch(url, options)
+            .then(response => {
+            console.log(response)
+               if (response.ok) {
+                  return response.json();
+               } else {
+                   throw new Error('Something went wrong ...');
+                }
+               })
+                .then(data => this.onSubmitSuccess(data.jwtToken))
+                .catch(error => this.onSubmitFailure(error.message));
+            }
 
   onClickCheckbox = () => {
     this.setState(prev => ({isPasswordVisible: !prev.isPasswordVisible}))
@@ -136,5 +144,6 @@ class Login extends Component {
     )
   }
 }
+
 
 export default Login

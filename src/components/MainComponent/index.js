@@ -8,28 +8,28 @@ const Home = () => {
     const [show, setShow] = useState(false)
     const [view, setView] = useState(false)
     const [file, setFile] = useState([]);
-    const [data, setData] = useState()
+    const [data, setData] = useState();
 
   const  handleFiles = async (files) => {
     const reader = new FileReader();
     reader.readAsText(files[0]);
-    reader.onload = function(e) {
-        const data = e.target.result
-        console.log(data)
-        setData(data)
+    reader.onload = async function(e) {
+        const result = e.target.result
+        console.log(result)
         setShow(true)
-    }
-    const url ='https://finanbackend.herokuapp.com/add/'
+        const url ='http://localhost:3002/add/'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
         method: 'POST',
         headers : {
             Authorization: `Bearer ${jwtToken}` 
         },
-        body: data
+        body: result
     }
     const response = await fetch(url, options)
     console.log(response.json())
+    }
+    
     
 }
 
@@ -41,11 +41,10 @@ const onClickView = async () => {
         headers : {
             Authorization: `Bearer ${jwtToken}` 
         }
-        
     }
     const response = await fetch(url, options)
     console.log(response.json())
-    setView(true)   
+    setView(true)
 }
 
 
